@@ -1,10 +1,12 @@
 package org.judy.entity.User;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.judy.dto.User.UserUpdateRequest;
 import org.judy.entity.Post.Post;
 
 import java.util.*;
@@ -24,7 +26,11 @@ public class User {
 
     // 사용자의 글
     @OneToMany(mappedBy = "user")
-    @com.fasterxml.jackson.annotation.JsonIgnore
+    @JsonIgnore
     private List<Post> posts;
+
+    public void update(String userName) {
+        this.userName = userName;
+    }
 
 }

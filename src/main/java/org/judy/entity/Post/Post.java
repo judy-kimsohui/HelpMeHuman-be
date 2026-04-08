@@ -1,5 +1,6 @@
 package org.judy.entity.Post;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -37,7 +38,7 @@ public class Post {
 
     // 게시물의 댓글
     @OneToMany(mappedBy = "post")
-    @com.fasterxml.jackson.annotation.JsonIgnore
+    @JsonIgnore
     private List<Comment> comments;
 
 }
