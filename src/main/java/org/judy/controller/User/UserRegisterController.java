@@ -3,7 +3,6 @@ package org.judy.controller.User;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.judy.dto.User.*;
-import org.judy.entity.User.User;
 import org.judy.service.User.UserRegisterService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

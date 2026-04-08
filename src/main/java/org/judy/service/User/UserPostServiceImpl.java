@@ -5,7 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.judy.dto.User.UserPostResponse;
 import org.judy.entity.Post.Post;
 import org.judy.entity.User.User;
-import org.judy.repository.Post.PostRepository;
 import org.judy.repository.User.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +12,9 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class UserPostSreviceImpl implements UserPostService {
+public class UserPostServiceImpl implements UserPostService {
 
     private final UserRepository userRepository;
-    private final PostRepository postRepository;
 
     @Transactional(readOnly = true)
     @Override
