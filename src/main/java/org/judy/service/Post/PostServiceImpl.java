@@ -2,16 +2,17 @@ package org.judy.service.Post;
 
 
 import lombok.RequiredArgsConstructor;
+import org.judy.dto.Comment.CommentResponse;
 import org.judy.dto.Post.PostRequest;
 import org.judy.dto.Post.PostResponse;
-import org.judy.entity.Author.Author;
+import org.judy.entity.Comment.Comment;
 import org.judy.entity.Post.Post;
 import org.judy.repository.Author.AuthorRepository;
 import org.judy.repository.Post.PostRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -54,6 +55,12 @@ public class PostServiceImpl implements PostService {
     public PostResponse getPostInfo(Long postId) {
         Post postInfo = findPostById(postId);
         return new PostResponse(postInfo.getTitle(), postInfo.getContent(), postInfo.getAuthor().getAuthorName());
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Comment> getPostComments(Long postId) {
+        return findPostById(postId).getComments();
     }
 
     private Post findPostById(Long postId) {

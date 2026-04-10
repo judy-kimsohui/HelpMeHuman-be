@@ -3,11 +3,13 @@ package org.judy.service.Author;
 import lombok.RequiredArgsConstructor;
 import org.judy.dto.Author.*;
 import org.judy.entity.Author.Author;
+import org.judy.entity.Post.Post;
 import org.judy.repository.Author.AuthorRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor

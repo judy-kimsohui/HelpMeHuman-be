@@ -4,10 +4,13 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.judy.dto.Post.PostRequest;
 import org.judy.dto.Post.PostResponse;
+import org.judy.entity.Comment.Comment;
 import org.judy.service.Post.PostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/posts")
@@ -27,14 +30,14 @@ public class PostController {
     }
 
     @PatchMapping("/{postId}")
-    public ResponseEntity<PostResponse> updatePost(@PathVariable Long postId, @RequestBody PostRequest request) {
+    public ResponseEntity<PostResponse> updatePost(@PathVariable Long postId, @Valid @RequestBody PostRequest request) {
         PostResponse response = postService.updatePost(postId, request);
         return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{postId}")
     public ResponseEntity<String> deletePost(@PathVariable Long postId) {
-        String response = "삭제 완료;";
+        String response = "삭제 완료";
         postService.deletePost(postId);
         return ResponseEntity.ok(response);
     }
@@ -42,6 +45,12 @@ public class PostController {
     @GetMapping("/{postId}")
     public ResponseEntity<PostResponse> getPostInfo(@PathVariable Long postId) {
         PostResponse response = postService.getPostInfo(postId);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{postId}/comments")
+    public ResponseEntity<List<Comment>> getPostComments(@PathVariable Long postId) {
+        List<Comment> response = postService.getPostComments(postId);
         return ResponseEntity.ok(response);
     }
 }

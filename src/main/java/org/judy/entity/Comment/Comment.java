@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.judy.dto.Comment.CommentRequest;
 import org.judy.entity.Author.Author;
 import org.judy.entity.Post.Post;
 
@@ -34,4 +35,8 @@ public class Comment {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
     private Author author;
+
+    public void update(CommentRequest request) {
+        this.content = request.getContent();
+    }
 }

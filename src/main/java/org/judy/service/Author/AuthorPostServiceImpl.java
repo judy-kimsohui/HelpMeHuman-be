@@ -18,13 +18,10 @@ public class AuthorPostServiceImpl implements AuthorPostService {
 
     @Transactional(readOnly = true)
     @Override
-    public AuthorPostResponse getAuthorPosts(Long authorId) {
+    public List<Post> getAuthorPosts(Long authorId) {
 
         Author author = authorRepository.findById(authorId)
                 .orElseThrow(() -> new IllegalArgumentException("일치하는 사용자 없음"));
-
-        List<Post> posts = author.getPosts();
-        return new AuthorPostResponse(posts);
+        return author.getPosts();
     }
-
 }
