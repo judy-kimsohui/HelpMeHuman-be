@@ -13,7 +13,7 @@ public class PostRequest {
     private String title;
 
     @NotBlank
-    private Long content;
+    private String content;
 
     @NotNull
     private Long authorId;

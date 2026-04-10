@@ -25,12 +25,6 @@ public class AuthorRegisterController {
         }
     }
 
-    @GetMapping("/{authorId}")
-    public ResponseEntity<AuthorInfoResponse> getAuthorInfo(@PathVariable Long authorId) {
-        AuthorInfoResponse response = authorRegisterService.getAuthorInfo(authorId);
-        return ResponseEntity.ok(response);
-    }
-
     @PatchMapping("/{authorId}")
     public ResponseEntity<AuthorUpdateResponse> updateAuthor(@PathVariable Long authorId, @Valid @RequestBody AuthorUpdateRequest request) {
         AuthorUpdateResponse response = authorRegisterService.updateAuthor(authorId, request);
@@ -45,4 +39,11 @@ public class AuthorRegisterController {
 
         // return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{authorId}")
+    public ResponseEntity<AuthorInfoResponse> getAuthorInfo(@PathVariable Long authorId) {
+        AuthorInfoResponse response = authorRegisterService.getAuthorInfo(authorId);
+        return ResponseEntity.ok(response);
+    }
+
 }

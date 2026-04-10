@@ -26,31 +26,31 @@ public class AuthorRegisterServiceImpl implements AuthorRegisterService {
         return new AuthorSignupResponse(newAuthor.getAuthorName());
     }
 
-    @Transactional(readOnly = true)
-    @Override
-    public AuthorInfoResponse getAuthorInfo(Long AuthorId) {
-        Author authorInfo = findAuthorById(AuthorId);
-
-        return new AuthorInfoResponse(authorInfo.getAuthorName());
-    }
-
     @Transactional
     @Override
-    public AuthorUpdateResponse updateAuthor(Long AuthorId, AuthorUpdateRequest request) {
-        Author updateAuthor = findAuthorById(AuthorId);
+    public AuthorUpdateResponse updateAuthor(Long authorId, AuthorUpdateRequest request) {
+        Author updateAuthor = findAuthorById(authorId);
         updateAuthor.update(request.getAuthorName());
         return new AuthorUpdateResponse(updateAuthor.getAuthorName());
     }
 
     @Transactional
     @Override
-    public void deleteAuthor(Long AuthorId) {
-        Author deleteAuthor = findAuthorById(AuthorId);
+    public void deleteAuthor(Long authorId) {
+        Author deleteAuthor = findAuthorById(authorId);
         authorRepository.delete(deleteAuthor);
     }
 
-    private Author findAuthorById(Long AuthorId) {
-        return authorRepository.findById(AuthorId)
+    @Transactional(readOnly = true)
+    @Override
+    public AuthorInfoResponse getAuthorInfo(Long authorId) {
+        Author authorInfo = findAuthorById(authorId);
+
+        return new AuthorInfoResponse(authorInfo.getAuthorName());
+    }
+
+    private Author findAuthorById(Long authorId) {
+        return authorRepository.findById(authorId)
                 .orElseThrow(() -> new IllegalArgumentException("일치하는 사용자 없음"));    // AuthorNotFoundException
     }
 }

@@ -7,6 +7,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.judy.dto.Post.PostRequest;
 import org.judy.entity.Author.Author;
 import org.judy.entity.Comment.Comment;
 
@@ -41,4 +42,8 @@ public class Post {
     @JsonIgnore
     private List<Comment> comments;
 
+    public void update(PostRequest request) {
+        this.title = request.getTitle();
+        this.content = request.getContent();
+    }
 }
