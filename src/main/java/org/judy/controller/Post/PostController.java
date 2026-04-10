@@ -2,7 +2,6 @@ package org.judy.controller.Post;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.judy.dto.Author.AuthorInfoResponse;
 import org.judy.dto.Post.PostRequest;
 import org.judy.dto.Post.PostResponse;
 import org.judy.service.Post.PostService;
@@ -45,5 +44,4 @@ public class PostController {
         PostResponse response = postService.getPostInfo(postId);
         return ResponseEntity.ok(response);
     }
-
 }
