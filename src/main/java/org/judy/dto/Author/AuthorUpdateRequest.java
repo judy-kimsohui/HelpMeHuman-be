@@ -1,14 +1,13 @@
-package org.judy.dto.User;
+package org.judy.dto.Author;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class UserUpdateRequest {
+public class AuthorUpdateRequest {
 
     @NotBlank
-    private String userName;
+    private String authorName;
 }

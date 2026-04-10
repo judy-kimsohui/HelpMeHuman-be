@@ -7,8 +7,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.judy.entity.Author.Author;
 import org.judy.entity.Comment.Comment;
-import org.judy.entity.User.User;
 
 import java.util.*;
 
@@ -33,8 +33,8 @@ public class Post {
 
     // 게시물 작성자
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User author;
+    @JoinColumn(name = "author_id")
+    private Author author;
 
     // 게시물의 댓글
     @OneToMany(mappedBy = "post")

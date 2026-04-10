@@ -1,15 +1,13 @@
-package org.judy.dto.User;
+package org.judy.dto.Author;
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
-public class UserSignupResponse {
+public class AuthorSignupRequest {
 
     @NotBlank
-    private String userName;
+    private String authorName;
 }

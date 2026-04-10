@@ -6,8 +6,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.judy.entity.Author.Author;
 import org.judy.entity.Post.Post;
-import org.judy.entity.User.User;
 
 @Getter
 @Entity
@@ -32,6 +32,6 @@ public class Comment {
 
     // 댓글 작성자
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User author;
+    @JoinColumn(name = "author_id")
+    private Author author;
 }

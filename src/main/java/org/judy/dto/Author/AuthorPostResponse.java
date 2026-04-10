@@ -1,4 +1,4 @@
-package org.judy.dto.User;
+package org.judy.dto.Author;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserPostResponse {
+public class AuthorPostResponse {
 
     private List<Post> posts;
 }

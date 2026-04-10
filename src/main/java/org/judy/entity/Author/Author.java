@@ -1,4 +1,4 @@
-package org.judy.entity.User;
+package org.judy.entity.Author;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.judy.dto.User.UserUpdateRequest;
 import org.judy.entity.Post.Post;
 
 import java.util.*;
@@ -15,22 +14,22 @@ import java.util.*;
 @Entity
 @NoArgsConstructor // 기본 생성자 자동 생성
 @AllArgsConstructor
-public class User {
+public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // id 자동 증가
     private Long id;
 
     @NotNull
-    private String userName;
+    private String authorName;
 
     // 사용자의 글
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "author")
     @JsonIgnore
     private List<Post> posts;
 
-    public void update(String userName) {
-        this.userName = userName;
+    public void update(String authorName) {
+        this.authorName = authorName;
     }
 
 }
